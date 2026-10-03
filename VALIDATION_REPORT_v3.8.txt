@@ -1,0 +1,15 @@
+峻爸 AI Transcriber v3.8｜驗證報告
+
+本次實際驗證：
+1. Python 語法檢查：通過（main.py / UI / exporters）。
+2. pytest 全套：38 passed, 2 skipped。
+3. v3.8 專屬測試：KTV 全文、TXT/SRT/VTT/JSON 匯入控制、AI 整理稿文字軌、雙稿核對、VTT 匯出控制皆存在。
+4. 實際產生繁體中文 HTML + VTT：成功。
+5. 產生的播放器 JavaScript 以 Node.js --check 驗證：通過。
+6. Word 時間軸輸出回歸測試：通過，仍以「時間軸逐字稿」為主要核對內容。
+7. GitHub Workflow：沿用 v3.7 已成功實機建置的 Portable / Single EXE 雙工作流程，版本更新為 v3.8；兩種 Artifact 分開建置、分開上傳。
+
+注意：
+- TXT 或直接貼上的文字沒有原始時間碼，因此播放器只能依既有時間軸順序做估算對齊，畫面會標示「估算對齊」。
+- 若希望外部翻譯稿有精準同步，建議使用 SRT / VTT，或先在播放器估算後匯出 VTT 再人工微調。
+- GUI / Windows EXE 的最終實機封裝仍由 GitHub Windows runner 執行。

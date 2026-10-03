@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!-- MSI metadata intentionally uses ASCII-only product/manufacturer text.
+       The application UI still displays the Traditional-Chinese brand name 峻爸.
+       Keeping MSI database strings ASCII avoids WiX/MSI code-page 1252 failures. -->
+  <Product Id="*"
+           Name="Junba AI Transcriber"
+           Language="1028"
+           Version="3.8.0.0"
+           Manufacturer="Junba"
+           UpgradeCode="A2C0B6B1-8B54-4D6E-9F29-3F63A7BBEA51">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perUser" Platform="x64" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Junba AI Transcriber is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="LocalAppDataFolder">
+        <Directory Id="INSTALLFOLDER" Name="Junba AI Transcriber" />
+      </Directory>
+    </Directory>
+    <Feature Id="MainFeature" Title="Junba AI Transcriber" Level="1">
+      <ComponentGroupRef Id="AppFiles" />
+    </Feature>
+  </Product>
+</Wix>

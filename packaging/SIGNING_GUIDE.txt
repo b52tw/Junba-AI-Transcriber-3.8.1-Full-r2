@@ -1,0 +1,10 @@
+峻爸 AI Transcriber v3.8｜Authenticode 簽章設定
+
+GitHub Actions 會在 Repository Secrets 找以下兩個值：
+1. WINDOWS_CERT_PFX_BASE64：將正式 Windows Code Signing PFX 憑證轉成 Base64 後的完整內容。
+2. WINDOWS_CERT_PASSWORD：PFX 密碼。
+
+若兩者都有設定，Portable 主 EXE 與 Single EXE 都會以 signtool / SHA256 / RFC3161 timestamp 自動簽署，並執行 signtool verify。
+若沒有設定，仍會產生未簽章版本，但 Chrome Safe Browsing / Windows SmartScreen / Defender 可能因低信譽或未知發行者提出警告。
+
+重要：程式不應也不會試圖繞過、停用或規避安全掃描。降低誤判的正規作法是：受信任的 Authenticode 憑證、穩定版本資訊、固定發行者、GitHub provenance、SHA256，以及向 Google/Microsoft 提交誤判申訴。

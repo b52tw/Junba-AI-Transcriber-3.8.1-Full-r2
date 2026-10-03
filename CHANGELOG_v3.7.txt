@@ -1,0 +1,10 @@
+峻爸 AI Transcriber v3.7｜雙發佈安全封裝版
+
+- 同時產出 Portable onedir 與 Single EXE 兩種 Windows x64 版本。
+- 兩種版本分成獨立 GitHub Jobs：其中一種失敗，不會拖累另一種 Artifact。
+- 兩種版本都執行 windowed I/O、自我測試與 GUI offscreen self-test 後才上傳。
+- Portable / Single EXE 都支援可選 Authenticode 正式程式碼簽章。
+- UPX 關閉、使用 asInvoker manifest、正式版本資訊與 SHA256。
+- GitHub provenance attestation 分別對 Portable ZIP 與 Single EXE 建立。
+- 不加入任何規避 Chrome Safe Browsing、Microsoft SmartScreen 或 Defender 的技巧。
+- 未配置受信任的程式碼簽章憑證時，瀏覽器或 Windows 仍可能對未知 EXE 顯示警告。

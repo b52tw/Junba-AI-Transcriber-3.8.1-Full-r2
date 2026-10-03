@@ -1,0 +1,9 @@
+峻爸 AI Transcriber v3.7a MSI / GitHub Actions Hotfix
+
+修正：
+1. WiX MSI error LGHT0311 / code page 1252：MSI 內部 metadata 改回 ASCII Junba。
+   程式 GUI 仍維持「峻爸」繁體中文，不受影響。
+2. Portable Artifact 改成在 MSI 建置之前先上傳。
+   即使 MSI 未來因環境問題失敗，也仍可取得已通過 self-test 的 Portable 版。
+3. MSI 建置改成 continue-on-error，成功才上傳 MSI，失敗只顯示 warning。
+4. Node.js 20 deprecation 是 GitHub action warning，與本次失敗無關。

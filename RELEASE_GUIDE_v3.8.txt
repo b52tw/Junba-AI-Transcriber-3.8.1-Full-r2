@@ -1,0 +1,21 @@
+峻爸 AI Transcriber v3.8｜雙發佈說明
+
+GitHub Actions 成功後會看到兩個主要 Artifact：
+1. Junba-AI-Transcriber-v3.8-Portable-Windows-x64
+   - 解壓後整個資料夾一起使用。
+   - OpenVINO / DLL 相容性通常較穩。
+
+2. Junba-AI-Transcriber-v3.8-Single-EXE-Windows-x64
+   - Artifact 下載後解壓一次，即可得到單一 EXE。
+   - 最方便帶到其他 Windows 10/11 x64 電腦使用。
+   - 若遇到 OpenVINO DLL、防毒或暫存解包相容性問題，改用 Portable。
+
+安全掃描／誤判：
+- 本版不會關閉或規避 Chrome Safe Browsing、Windows SmartScreen、Microsoft Defender。
+- 若要降低「未知發行者／危險下載」誤判，請配置正式受信任的 Authenticode Code Signing 憑證。
+- GitHub Secrets 名稱：WINDOWS_CERT_PFX_BASE64、WINDOWS_CERT_PASSWORD。
+- Workflow 在有憑證時會同時簽署 Portable 主 EXE 與 Single EXE，並用 signtool verify 驗證。
+- 兩個產物各自建立 SHA256 與 GitHub provenance attestation。
+
+Workflow 路徑：
+.github/workflows/build-windows-v3.8.yml

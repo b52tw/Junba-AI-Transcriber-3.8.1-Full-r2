@@ -1,0 +1,20 @@
+峻爸 AI Transcriber v3.7｜驗證報告
+
+日期：2026-10-03
+
+本次核心修正：Word 時間軸核對版
+
+驗證結果：
+- Python compileall：通過
+- pytest：36 passed, 2 skipped
+- Word 匯出回歸測試：通過
+  - 時間軸逐字稿位於 Word 主體前方
+  - 欄位包含：開始–結束時間／講者／逐字內容
+  - Gemini 整理後全文位於後方參考附錄
+- DOCX 實際建立後以 python-docx 重新開啟：通過
+- DOCX 以 LibreOffice render_docx.py 實際渲染：3 頁皆成功
+- 已逐頁視覺檢查：無文字重疊、無表格裁切、繁體中文可正常顯示
+- HTML + VTT 錄音核對播放器：結構保留
+- v3.5 安全發佈／Portable／MSI／SHA256／簽章預留流程：保留
+
+兩個 skipped 測試屬於需要特定 Windows/PySide6/硬體環境的條件式測試，GitHub Windows runner 會再執行平台端驗證。

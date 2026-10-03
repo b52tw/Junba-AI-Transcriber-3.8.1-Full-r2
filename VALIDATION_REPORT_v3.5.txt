@@ -1,0 +1,18 @@
+峻爸 AI Transcriber v3.7 驗證報告
+
+目的：重做 Windows 發佈方式，降低未簽章 PyInstaller one-file 類型常見的誤判風險；不包含任何規避 Chrome / Defender / SmartScreen 的技術。
+
+已驗證：
+- Python compileall：PASS
+- pytest：35 passed, 2 skipped
+- GitHub Actions YAML 解析：PASS
+- Portable spec：onedir / upx=False / console=False
+- Windows manifest：asInvoker
+- Windows version resource：3.7.0.0 / ProductName=峻爸 AI Transcriber
+- GitHub Workflow：Portable self-test、MSI (WiX) 建置、SHA256SUMS、dependency list、build provenance
+- Optional Authenticode：支援 WINDOWS_CERT_PFX_BASE64 + WINDOWS_CERT_PASSWORD Secrets
+- 未設定簽章憑證時：仍會建置 unsigned MSI/Portable，但瀏覽器與 SmartScreen 仍可能警告
+
+注意：
+- MSI 與 Authenticode 的最終 Windows 實機結果需由 GitHub windows-latest runner 執行。
+- 受信任的 Code Signing 憑證是降低 SmartScreen/Chrome 警告最有效的方法；無簽章時無法保證不被攔截。

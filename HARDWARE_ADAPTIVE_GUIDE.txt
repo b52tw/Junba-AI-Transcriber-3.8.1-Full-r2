@@ -1,0 +1,18 @@
+峻爸 AI Transcriber v3.4｜最佳化與硬體自適應
+
+預設「最佳化（推薦）」：
+- 有 Gemini API Key：混合模式（本機 Whisper → 文字送 Gemini 整理；音訊不上傳）。
+- 無 API Key：完全離線 Whisper。
+- 模型：自動。
+- 硬體：自動自適應。
+- 切割：0 代表自動切段。
+
+自適應路徑：
+- NVIDIA CUDA：優先 CUDA。
+- 新款 Intel Arc：可用 OpenVINO GPU。
+- Intel NPU：支援時可使用，但若失敗自動降級。
+- 舊款 Intel Iris Xe/UHD：最佳化預設偏向 CPU INT8 + small/medium，避免大型 OpenVINO 模型長時間卡住。
+- AMD CPU：CPU/faster-whisper 保底。
+- AMD GPU：本版未直接以 OpenVINO 驅動；會安全回 CPU。
+
+每台電腦會獨立記錄成功/失敗與 RTF（處理耗時 ÷ 音訊長度），之後自適應會逐步偏向該電腦真正較快的路徑。

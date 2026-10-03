@@ -1,0 +1,26 @@
+峻爸 AI Transcriber v3.4｜Validation Report
+
+驗證日期：2026-10-03
+
+本地驗證：
+- Python compileall：PASS
+- pytest：35 passed, 2 skipped
+  - skipped 項目需要 PySide6/Windows GUI 環境，會由 GitHub Windows runner 執行。
+
+v3.4 新增回歸測試：
+- M4A 無重編碼快速切割：PASS
+- split_manifest 記錄 method=fast-copy：PASS
+- 切割取消不留下有效 manifest：PASS
+- 安全停止冪等測試：已加入（Windows/PySide6 執行）
+- 尚未開始辨識時仍可產生可開啟中止版 DOCX：已加入（Windows/PySide6 執行）
+
+FFmpeg 實測（本建置環境，僅作程式路徑驗證，不代表使用者電腦速度）：
+- 120 秒 M4A，切成 60 秒區段：fast-copy，約 0.08 秒完成。
+
+GitHub Actions：
+- workflow: .github/workflows/build-windows-v3.4.yml
+- Windows runner 會執行 compileall + 全部 pytest + GUI self-test + Portable/Single EXE self-test。
+
+注意：
+- 快速 stream-copy 的切點以容器可用時間點為準，作語音辨識/字幕用途足夠；若容器/codec 不相容，程式自動改用 PCM WAV 精確相容切割。
+- OpenVINO/NPU/GPU 推論本身是否可中途硬中斷仍取決於引擎；v3.4 的「立即停止」至少保證 FFmpeg 預處理可即時中止，推論階段則在下一個安全點結轉。
